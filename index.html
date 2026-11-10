@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SportSupp – günstigstes Kreatin, Whey Isolat und Flavour</title>
+<meta name="description" content="Preise pro Kilo für Kreatin, Whey Isolat und Geschmackspulver, mit im Checkout geprüften Rabattcodes.">
+<meta name="theme-color" content="#18202B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F4;
+    --ink:#18202B;
+    --muted:#5B6470;
+    --rule:#C9CDC6;
+    --sticker:#FFD43B;
+    --ok:#1F7A4D;
+    --warn:#A15C00;
+    --no:#A3262A;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-variation-settings:"wdth" 100;font-size:16px;line-height:1.45}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+  .wrap{max-width:720px;margin:0 auto;padding:0 18px}
+
+  header.top{padding:20px 0 6px}
+  .brand{font-weight:900;font-variation-settings:"wdth" 70;font-size:22px;letter-spacing:.01em;margin:0}
+  .brand span{font-weight:500;color:var(--muted);font-variation-settings:"wdth" 100;font-size:14px;margin-left:8px;letter-spacing:0}
+
+  /* category switch */
+  .switch{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:18px 0 0;border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:var(--card)}
+  .switch button{appearance:none;border:0;background:transparent;font:inherit;font-weight:700;font-variation-settings:"wdth" 85;font-size:16px;padding:12px 6px;cursor:pointer;color:var(--ink)}
+  .switch button + button{border-left:2px solid var(--ink)}
+  .switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+  /* hero label: styled like the nutrition panel on a tub */
+  .panel{margin:20px 0 8px;background:var(--card);border:3px solid var(--ink);padding:14px 16px 16px;position:relative}
+  .panel h2{margin:0;font-weight:900;font-variation-settings:"wdth" 62;font-size:40px;line-height:1;letter-spacing:-.005em}
+  .panel .sub{margin:4px 0 0;color:var(--muted);font-size:14px}
+  .bar-thick{height:10px;background:var(--ink);margin:12px -16px 0}
+  .bar-thin{height:2px;background:var(--ink);margin:0}
+  .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:15px}
+  .row:last-of-type{border-bottom:0}
+  .row b{font-weight:700}
+  .big{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:10px 0 8px}
+  .big .val{font-weight:900;font-variation-settings:"wdth" 62;font-size:clamp(64px,19vw,104px);line-height:.85;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .big .unit{font-weight:700;font-size:18px;text-align:right;line-height:1.15}
+  .big .unit small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .btn{appearance:none;display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:15px;padding:11px 16px;border-radius:8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+
+  /* the price sticker: the one loud element */
+  .sticker{display:inline-flex;align-items:center;gap:6px;background:var(--sticker);color:var(--ink);font-weight:800;font-variation-settings:"wdth" 80;padding:4px 10px 4px 9px;border-radius:999px;font-size:14px;line-height:1.2;border:0;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .sticker svg{width:13px;height:13px}
+  .panel .sticker{position:absolute;top:-14px;right:14px;transform:rotate(4deg);font-size:17px;padding:8px 14px;box-shadow:0 2px 0 var(--ink)}
+  .sticker.none{background:#E6E8E3;cursor:default}
+  .copied{background:var(--ok)!important;color:#fff!important}
+
+  section{margin:34px 0}
+  section > h3{font-weight:800;font-variation-settings:"wdth" 75;font-size:24px;margin:0 0 4px;line-height:1.15}
+  section > p.lead{margin:0 0 14px;color:var(--muted);font-size:15px;max-width:60ch}
+
+  /* ranking */
+  ol.rank{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+  ol.rank li{display:grid;grid-template-columns:30px 1fr auto;gap:4px 12px;padding:13px 0;border-bottom:1px solid var(--rule);align-items:start}
+  .pos{font-weight:900;font-variation-settings:"wdth" 62;font-size:24px;line-height:1;color:var(--muted);padding-top:2px}
+  li:first-child .pos{color:var(--ink)}
+  .what b{display:block;font-weight:700}
+  .what .meta{color:var(--muted);font-size:14px}
+  .what .meta s{color:var(--muted)}
+  .what .note{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .what .line2{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:6px}
+  .what .line2 a{font-size:14px;font-weight:600}
+  .perkg{text-align:right;white-space:nowrap}
+  .perkg strong{display:block;font-weight:900;font-variation-settings:"wdth" 70;font-size:24px;line-height:1;font-variant-numeric:tabular-nums}
+  .perkg span{font-size:12.5px;color:var(--muted)}
+  .checks{font-size:12.5px;color:var(--ok);font-weight:600}
+
+  /* codes */
+  .shopcodes{border-top:2px solid var(--ink)}
+  .shopcodes details{border-bottom:1px solid var(--rule)}
+  .shopcodes summary{cursor:pointer;padding:12px 0;font-weight:700;display:flex;justify-content:space-between;gap:10px;list-style:none}
+  .shopcodes summary::-webkit-details-marker{display:none}
+  .shopcodes summary .count{font-weight:400;color:var(--muted);font-size:14px}
+  .shopcodes summary::after{content:"+";font-weight:400}
+  .shopcodes details[open] summary::after{content:"–"}
+  .crow{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:0 0 12px;align-items:center}
+  .status{font-size:13px;font-weight:700}
+  .status.ok{color:var(--ok)} .status.teils{color:var(--warn)} .status.no{color:var(--no)}
+  .crow .eff{grid-column:1 / -1;font-size:14px;color:var(--muted);margin-top:-2px}
+  .crow + .crow{border-top:1px dashed var(--rule);padding-top:12px}
+
+  footer{border-top:2px solid var(--ink);padding:16px 0 40px;color:var(--muted);font-size:14px}
+  footer p{max-width:62ch;margin:0 0 10px}
+
+  .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .18s, transform .18s}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  @media (prefers-reduced-motion:reduce){.toast{transition:none}}
+  @media (min-width:640px){ .panel{padding:18px 22px 20px} .bar-thick{margin:14px -22px 0} .panel h2{font-size:52px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="brand">SportSupp<span id="stand"></span></p>
+  </header>
+
+  <nav class="switch" aria-label="Produktart">
+    <button type="button" data-cat="kreatin" aria-pressed="true">Kreatin</button>
+    <button type="button" data-cat="isolat" aria-pressed="false">Whey Isolat</button>
+    <button type="button" data-cat="flavour" aria-pressed="false">Chunky &amp; Co.</button>
+  </nav>
+
+  <main>
+    <div id="hero"></div>
+
+    <section aria-labelledby="h-rank">
+      <h3 id="h-rank">Alle geprüften Angebote</h3>
+      <p class="lead" id="rank-lead">Sortiert nach Preis pro Kilo, nachdem der Code abgezogen ist.</p>
+      <ol class="rank" id="rank"></ol>
+    </section>
+
+    <section aria-labelledby="h-codes">
+      <h3 id="h-codes">Rabattcodes je Shop</h3>
+      <p class="lead">Auch die Codes, die nicht funktionieren. So musst du sie nicht selbst ausprobieren.</p>
+      <div class="shopcodes" id="codes"></div>
+    </section>
+  </main>
+
+  <footer id="foot"></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(async function(){
+  const res = await fetch('data.json', {cache:'no-cache'});
+  const D = await res.json();
+  const eur = n => n.toLocaleString('de-DE',{style:'currency',currency:'EUR'});
+  const eur0 = n => n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const size = g => g>=1000 ? (g/1000).toLocaleString('de-DE')+' kg' : g+' g';
+  const perKg = p => p.final / p.grams * 1000;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const copyIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+  const catNames = {kreatin:'Kreatin', isolat:'Whey Isolat', flavour:'Geschmackspulver'};
+  const catLead = {
+    kreatin:'Kreatin-Monohydrat ist überall derselbe Rohstoff. Hier zählt nur der Preis pro Kilo.',
+    isolat:'Whey-Isolat und Clear Whey. Clear Whey schmeckt saftig statt cremig.',
+    flavour:'Chunky Flavour von More und die Alternativen dazu.'
+  };
+
+  document.getElementById('stand').textContent = 'Stand: ' + D.updatedLabel;
+
+  function sticker(code, big){
+    if(!code) return '<span class="sticker none">ohne Code</span>';
+    return `<button type="button" class="sticker" data-copy="${esc(code)}" aria-label="Code ${esc(code)} kopieren">${big?'Code ':''}${esc(code)} ${copyIcon}</button>`;
+  }
+
+  function render(cat){
+    const list = D.products.filter(p=>p.cat===cat).sort((a,b)=>perKg(a)-perKg(b));
+    const top = list[0], shop = D.shops[top.shop];
+    const saved = top.price - top.final;
+    document.getElementById('hero').innerHTML = `
+      <article class="panel" aria-label="Günstigstes Angebot">
+        ${sticker(top.code, true)}
+        <h2>${catNames[cat]}</h2>
+        <p class="sub">Am günstigsten pro Kilo, geprüft am ${new Date(D.updated).toLocaleDateString('de-DE')}</p>
+        <div class="bar-thick"></div>
+        <div class="big"><div class="val">${eur0(perKg(top))}</div><div class="unit">€ pro kg<small>nach Code</small></div></div>
+        <div class="bar-thin"></div>
+        <div class="row"><span>Produkt</span><b>${esc(top.name)}</b></div>
+        <div class="row"><span>Shop</span><b>${esc(shop.name)}</b></div>
+        <div class="row"><span>Packung</span><b>${size(top.grams)}</b></div>
+        <div class="row"><span>Normalpreis</span><b>${eur(top.price)}</b></div>
+        <div class="row"><span>Du zahlst${top.code?' mit '+esc(top.code):''}</span><b>${eur(top.final)}${saved>0.005?' (−'+eur(saved)+')':''}</b></div>
+        <div class="row"><span>Gratis-Versand</span><b>${shop.freeFrom?'ab '+eur(shop.freeFrom):'siehe Shop'}</b></div>
+        ${top.note?`<p class="sub" style="margin-top:8px">${esc(top.note)}</p>`:''}
+        <div class="actions">
+          <a class="btn primary" href="${esc(top.url)}" target="_blank" rel="noopener">Zum Produkt bei ${esc(shop.name)}</a>
+          ${top.code?`<button type="button" class="btn" data-copy="${esc(top.code)}">Code kopieren</button>`:''}
+        </div>
+      </article>`;
+    document.getElementById('rank-lead').textContent = catLead[cat] + ' Sortiert nach Preis pro Kilo, nachdem der Code abgezogen ist.';
+    document.getElementById('rank').innerHTML = list.map((p,i)=>{
+      const s = D.shops[p.shop];
+      const old = p.final < p.price - 0.005 ? `<s>${eur(p.price)}</s> ` : '';
+      return `<li>
+        <div class="pos" aria-label="Platz ${i+1}">${i+1}</div>
+        <div class="what">
+          <b>${esc(s.name)} – ${esc(p.name)}</b>
+          <div class="meta">${size(p.grams)} für ${old}${eur(p.final)}</div>
+          <div class="line2">${sticker(p.code)}<a href="${esc(p.url)}" target="_blank" rel="noopener">Zum Shop</a><span class="checks">${p.checks>1?p.checks+'× im Checkout geprüft':'im Checkout geprüft'}</span></div>
+          ${p.note?`<div class="note">${esc(p.note)}</div>`:''}
+        </div>
+        <div class="perkg"><strong>${eur0(perKg(p))} €</strong><span>pro kg</span></div>
+      </li>`;
+    }).join('');
+    document.querySelectorAll('.switch button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.cat===cat)));
+    try{ localStorage.setItem('sportsupp-cat', cat); }catch(e){}
+  }
+
+  // codes grouped by shop
+  const byShop = {};
+  D.codes.forEach(c => (byShop[c.shop] = byShop[c.shop] || []).push(c));
+  document.getElementById('codes').innerHTML = Object.entries(byShop).map(([k,cs])=>{
+    const ok = cs.filter(c=>c.works===true).length;
+    return `<details><summary><span>${esc(D.shops[k].name)}</span><span class="count">${ok} von ${cs.length} funktionieren</span></summary>
+      ${cs.map(c=>{
+        const st = c.works===true?['ok','funktioniert']:c.works===false?['no','funktioniert nicht']:['teils','eingeschränkt'];
+        const chip = c.code==='–' ? '<span class="sticker none">kein Code</span>' : (c.works===false ? `<span class="sticker none">${esc(c.code)}</span>` : sticker(c.code));
+        return `<div class="crow">${chip}<span class="status ${st[0]}">${st[1]}</span><div class="eff">${esc(c.effect)}</div></div>`;
+      }).join('')}
+    </details>`;
+  }).join('');
+
+  document.getElementById('foot').innerHTML = `
+    <p><b style="color:var(--ink)">So wurde geprüft.</b> ${esc(D.method)}</p>
+    <p>Preise und Codes ändern sich oft, gerade rund um Black Friday. Vor dem Kauf zeigt dir die Kasse im Shop den echten Endpreis.</p>`;
+
+  // interactions
+  const toast = document.getElementById('toast'); let tt;
+  document.addEventListener('click', async e=>{
+    const c = e.target.closest('[data-copy]');
+    if(c){
+      const code = c.dataset.copy;
+      try{ await navigator.clipboard.writeText(code); }catch(err){
+        const ta=document.createElement('textarea'); ta.value=code; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      }
+      toast.textContent = `Code ${code} kopiert`; toast.classList.add('show');
+      clearTimeout(tt); tt=setTimeout(()=>toast.classList.remove('show'),1600);
+      return;
+    }
+    const b = e.target.closest('.switch button');
+    if(b) render(b.dataset.cat);
+  });
+
+  let start='kreatin'; try{ start = localStorage.getItem('sportsupp-cat') || 'kreatin'; }catch(e){}
+  render(D.products.some(p=>p.cat===start)?start:'kreatin');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+{
+  "updated": "2026-11-10",
+  "updatedLabel": "10. November 2026, abends",
+  "method": "Jeder Preis wurde im echten Checkout des Herstellers geprüft: Produkt in den Warenkorb, Code an der Kasse eingegeben, Endpreis abgelesen. Zur Kontrolle lief bei jedem Shop zusätzlich ein erfundener Code mit, damit ein alter Rabatt im Warenkorb nicht als Treffer zählt. Versandkosten sind nicht eingerechnet.",
+  "shops": {
+    "ironbrothers": {
+      "name": "Iron Brothers",
+      "url": "https://www.ironbrothers-shop.com",
+      "freeFrom": 50
+    },
+    "bodylab": {
+      "name": "Bodylab24",
+      "url": "https://www.bodylab24.de",
+      "freeFrom": 85
+    },
+    "gannikus": {
+      "name": "Gannikus",
+      "url": "https://www.gannikus-shop.com",
+      "freeFrom": 65
+    },
+    "myprotein": {
+      "name": "Myprotein",
+      "url": "https://de.myprotein.com",
+      "freeFrom": 50
+    },
+    "peak": {
+      "name": "Peak",
+      "url": "https://www.peak.ag",
+      "freeFrom": 50
+    },
+    "esn": {
+      "name": "ESN",
+      "url": "https://www.esn.com",
+      "freeFrom": 75,
+      "shipping": 4.9
+    },
+    "naturecan": {
+      "name": "Naturecan",
+      "url": "https://www.naturecan.de",
+      "freeFrom": null
+    },
+    "more": {
+      "name": "More Nutrition",
+      "url": "https://morenutrition.de",
+      "freeFrom": 55,
+      "shipping": 4.9
+    },
+    "rocka": {
+      "name": "Rocka Nutrition",
+      "url": "https://www.rockanutrition.de",
+      "freeFrom": 60,
+      "shipping": 4.9
+    },
+    "ruehl": {
+      "name": "Rühl24",
+      "url": "https://www.ruehl24.de",
+      "freeFrom": null,
+      "shipping": 4.8
+    }
+  },
+  "products": [
+    {
+      "cat": "kreatin",
+      "shop": "ironbrothers",
+      "name": "Creatine Monohydrate, Double Pack",
+      "grams": 2000,
+      "price": 20.0,
+      "code": "DROPTIME",
+      "final": 18.0,
+      "url": "https://www.ironbrothers-shop.com/products/creatine-monohydrate-double-pack-1",
+      "checks": 2,
+      "note": "IRON10 ergibt denselben Preis."
+    },
+    {
+      "cat": "kreatin",
+      "shop": "ironbrothers",
+      "name": "Creatine Monohydrate",
+      "grams": 1000,
+      "price": 10.53,
+      "code": "DROPTIME",
+      "final": 9.48,
+      "url": "https://www.ironbrothers-shop.com/products/creatine-monohydrate-1kg",
+      "checks": 2
+    },
+    {
+      "cat": "kreatin",
+      "shop": "bodylab",
+      "name": "Creatine Powder",
+      "grams": 500,
+      "price": 11.11,
+      "code": "DROPTIME",
+      "final": 8.5,
+      "url": "https://www.bodylab24.de/products/bodylab24-creatine-powder-500g",
+      "checks": 2,
+      "note": "Einzeldose kaufen: Auf die 2er- und 3er-Packs gibt der Code nur 1 %."
+    },
+    {
+      "cat": "kreatin",
+      "shop": "gannikus",
+      "name": "Crea Basic",
+      "grams": 1000,
+      "price": 21.99,
+      "code": "SHOP",
+      "final": 19.8,
+      "url": "https://www.gannikus-shop.com/products/crea-basic-creatin-monohydrat",
+      "checks": 2,
+      "note": "DROPTIME ergibt denselben Preis."
+    },
+    {
+      "cat": "kreatin",
+      "shop": "myprotein",
+      "name": "Kreatin Monohydrat",
+      "grams": 500,
+      "price": 10.0,
+      "code": null,
+      "final": 10.0,
+      "url": "https://de.myprotein.com/p/sporternahrung/creatine-monohydrat/12456626/",
+      "checks": 1,
+      "note": "Rabatt ist schon im Preis, laut Shop kein Code nötig."
+    },
+    {
+      "cat": "kreatin",
+      "shop": "peak",
+      "name": "Creatine Monohydrate",
+      "grams": 500,
+      "price": 19.9,
+      "code": "GOLDEN",
+      "final": 15.92,
+      "url": "https://www.peak.ag/products/creatin-monohydrat",
+      "checks": 2,
+      "note": "Golden Days: ab mehreren Artikeln kommen bis zu 10 % Mengenrabatt dazu."
+    },
+    {
+      "cat": "kreatin",
+      "shop": "naturecan",
+      "name": "Kreatin Monohydrat 100% Pur",
+      "grams": 1000,
+      "price": 49.99,
+      "code": "WELCOME10",
+      "final": 45.0,
+      "url": "https://www.naturecan.de/products/kreatin",
+      "checks": 2
+    },
+    {
+      "cat": "kreatin",
+      "shop": "esn",
+      "name": "Ultrapure Kreatin",
+      "grams": 500,
+      "price": 29.9,
+      "code": "DROPTIME",
+      "final": 26.91,
+      "url": "https://www.esn.com/products/esn-ultrapure-creatine-monohydrate",
+      "checks": 1
+    },
+    {
+      "cat": "kreatin",
+      "shop": "rocka",
+      "name": "Creatine Monohydrat",
+      "grams": 150,
+      "price": 10.99,
+      "code": "DROPTIME",
+      "final": 9.9,
+      "url": "https://www.rockanutrition.de/products/crea-rock-creatin-monohydrat",
+      "checks": 1
+    },
+    {
+      "cat": "kreatin",
+      "shop": "more",
+      "name": "Daily Creatine",
+      "grams": 250,
+      "price": 25.99,
+      "code": "DROPTIME",
+      "final": 18.19,
+      "url": "https://morenutrition.de/products/daily-creatine",
+      "checks": 2
+    },
+    {
+      "cat": "isolat",
+      "shop": "ruehl",
+      "name": "Whey Protein Isolat 90",
+      "grams": 1000,
+      "price": 31.96,
+      "code": null,
+      "final": 31.96,
+      "url": "https://www.ruehl24.de/de/protein/whey-protein-isolat/whey-isolat-protein.html",
+      "checks": 1,
+      "note": "Rabatt ist schon im Preis. Gutscheine gehen bei Rühl24 nur mit Kundenkonto, deshalb nicht getestet."
+    },
+    {
+      "cat": "isolat",
+      "shop": "gannikus",
+      "name": "Verum Whey Isolate",
+      "grams": 1000,
+      "price": 37.99,
+      "code": "SHOP",
+      "final": 34.2,
+      "url": "https://www.gannikus-shop.com/products/verum-whey-isolate",
+      "checks": 2
+    },
+    {
+      "cat": "isolat",
+      "shop": "naturecan",
+      "name": "Clear Whey Protein Isolat",
+      "grams": 2000,
+      "price": 82.99,
+      "code": "WELCOME10",
+      "final": 74.7,
+      "url": "https://www.naturecan.de/products/clear-whey-protein-isolate",
+      "checks": 2,
+      "note": "Clear Whey, also saftig statt cremig. NATURECAN10 ergibt denselben Preis."
+    },
+    {
+      "cat": "isolat",
+      "shop": "bodylab",
+      "name": "Whey Protein Isolat",
+      "grams": 2000,
+      "price": 89.9,
+      "code": "DROPTIME",
+      "final": 89.01,
+      "url": "https://www.bodylab24.de/products/bodylab24-whey-protein-isolat-2000g",
+      "checks": 1
+    },
+    {
+      "cat": "isolat",
+      "shop": "myprotein",
+      "name": "Impact Whey Isolate",
+      "grams": 900,
+      "price": 44.99,
+      "code": null,
+      "final": 44.99,
+      "url": "https://de.myprotein.com/p/sporternahrung/impact-whey-isolate/10530911/",
+      "checks": 1,
+      "note": "Rabatt ist schon im Preis, laut Shop kein Code nötig."
+    },
+    {
+      "cat": "isolat",
+      "shop": "more",
+      "name": "More Clear Protein",
+      "grams": 600,
+      "price": 40.99,
+      "code": "DROPTIME",
+      "final": 30.74,
+      "url": "https://morenutrition.de/products/more-clear-protein",
+      "checks": 2,
+      "note": "Clear Whey. MORE10 ergibt denselben Preis."
+    },
+    {
+      "cat": "isolat",
+      "shop": "peak",
+      "name": "Whey Protein Isolate",
+      "grams": 750,
+      "price": 49.9,
+      "code": "GOLDEN",
+      "final": 39.92,
+      "url": "https://www.peak.ag/products/wpi",
+      "checks": 2
+    },
+    {
+      "cat": "isolat",
+      "shop": "esn",
+      "name": "Iso Whey Protein Isolat",
+      "grams": 908,
+      "price": 54.9,
+      "code": "DROPTIME",
+      "final": 49.41,
+      "url": "https://www.esn.com/products/esn-iso-whey-protein",
+      "checks": 1
+    },
+    {
+      "cat": "isolat",
+      "shop": "peak",
+      "name": "Clear Whey Isolate",
+      "grams": 450,
+      "price": 34.9,
+      "code": "GOLDEN",
+      "final": 27.92,
+      "url": "https://www.peak.ag/products/clear-whey-isolate",
+      "checks": 1
+    },
+    {
+      "cat": "flavour",
+      "shop": "bodylab",
+      "name": "Flavour Powder",
+      "grams": 350,
+      "price": 15.99,
+      "code": "DROPTIME",
+      "final": 12.32,
+      "url": "https://www.bodylab24.de/products/flavour-powder-350g",
+      "checks": 2,
+      "note": "SINGLEMAX gibt etwas weniger (12,80 €)."
+    },
+    {
+      "cat": "flavour",
+      "shop": "ironbrothers",
+      "name": "Crunchy Flavour, Double Pack",
+      "grams": 500,
+      "price": 23.89,
+      "code": "DROPTIME",
+      "final": 21.51,
+      "url": "https://www.ironbrothers-shop.com/products/crunchy-flavour%C2%AE-double-pack",
+      "checks": 2,
+      "note": "Mit Crunchies, am nächsten am Chunky Flavour. IRON10 ergibt denselben Preis."
+    },
+    {
+      "cat": "flavour",
+      "shop": "peak",
+      "name": "Yummy Flav Powder",
+      "grams": 250,
+      "price": 13.9,
+      "code": "GOLDEN",
+      "final": 11.12,
+      "url": "https://www.peak.ag/products/yummy-flav-powder",
+      "checks": 2
+    },
+    {
+      "cat": "flavour",
+      "shop": "ironbrothers",
+      "name": "Crunchy Flavour",
+      "grams": 250,
+      "price": 12.58,
+      "code": "DROPTIME",
+      "final": 11.33,
+      "url": "https://www.ironbrothers-shop.com/products/crunchy-flavour",
+      "checks": 1
+    },
+    {
+      "cat": "flavour",
+      "shop": "more",
+      "name": "Chunky Flavour, Dark Cookie Crumble",
+      "grams": 170,
+      "price": 13.99,
+      "code": "DROPTIME",
+      "final": 9.79,
+      "url": "https://morenutrition.de/products/chunky-flavour",
+      "checks": 2,
+      "note": "Das Original. Die 170-g-Sorte ist pro kg günstiger als die 150-g-Sorten. MORE10 ergibt denselben Preis."
+    },
+    {
+      "cat": "flavour",
+      "shop": "more",
+      "name": "Chunky Flavour, 150-g-Sorten",
+      "grams": 150,
+      "price": 13.99,
+      "code": "DROPTIME",
+      "final": 9.79,
+      "url": "https://morenutrition.de/products/chunky-flavour",
+      "checks": 2
+    },
+    {
+      "cat": "flavour",
+      "shop": "gannikus",
+      "name": "Verum Licious",
+      "grams": 250,
+      "price": 17.99,
+      "code": "SHOP",
+      "final": 16.2,
+      "url": "https://www.gannikus-shop.com/products/verum-licious",
+      "checks": 1
+    },
+    {
+      "cat": "flavour",
+      "shop": "rocka",
+      "name": "Flavor Powder",
+      "grams": 250,
+      "price": 19.99,
+      "code": "DROPTIME",
+      "final": 18.0,
+      "url": "https://www.rockanutrition.de/products/flavor-powder",
+      "checks": 1
+    },
+    {
+      "cat": "flavour",
+      "shop": "esn",
+      "name": "Designer Flavour Powder",
+      "grams": 130,
+      "price": 13.9,
+      "code": "DROPTIME",
+      "final": 12.51,
+      "url": "https://www.esn.com/products/designer-flavor-powder",
+      "checks": 1
+    }
+  ],
+  "codes": [
+    {
+      "shop": "ironbrothers",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "10 % auf alles, auch auf Black-Week-Preise"
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "IRON10",
+      "works": true,
+      "effect": "10 %, gleich wie DROPTIME"
+    },
+    {
+      "shop": "bodylab",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "rund 23 % auf Einzelprodukte, nur 1 % auf Bundles"
+    },
+    {
+      "shop": "bodylab",
+      "code": "SINGLEMAX",
+      "works": "teils",
+      "effect": "20 % auf Flavour Powder, auf Kreatin und Isolat nichts"
+    },
+    {
+      "shop": "gannikus",
+      "code": "SHOP",
+      "works": true,
+      "effect": "10 % auf alles (Banner im Shop)"
+    },
+    {
+      "shop": "gannikus",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "10 %, gleich wie SHOP"
+    },
+    {
+      "shop": "peak",
+      "code": "GOLDEN",
+      "works": true,
+      "effect": "20 % auf alles (Golden Days)"
+    },
+    {
+      "shop": "peak",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "20 %, gleich wie GOLDEN"
+    },
+    {
+      "shop": "more",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein"
+    },
+    {
+      "shop": "more",
+      "code": "MORE10",
+      "works": true,
+      "effect": "30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein"
+    },
+    {
+      "shop": "more",
+      "code": "IQ10",
+      "works": true,
+      "effect": "30 % (25 % auf Clear Protein), gleich wie DROPTIME; in einem von drei Durchgängen kam der Rabatt nicht an"
+    },
+    {
+      "shop": "esn",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "10 %, nicht auf Sale-Artikel"
+    },
+    {
+      "shop": "esn",
+      "code": "ESN",
+      "works": false,
+      "effect": "nur Proben und Einzelriegel, nichts auf Kreatin, Isolat, Flavour"
+    },
+    {
+      "shop": "esn",
+      "code": "WILKOMMEN10",
+      "works": false,
+      "effect": "kein Rabatt"
+    },
+    {
+      "shop": "naturecan",
+      "code": "WELCOME10",
+      "works": true,
+      "effect": "10 %"
+    },
+    {
+      "shop": "naturecan",
+      "code": "NATURECAN10",
+      "works": true,
+      "effect": "10 %"
+    },
+    {
+      "shop": "naturecan",
+      "code": "DROPTIME",
+      "works": false,
+      "effect": "kein Rabatt"
+    },
+    {
+      "shop": "rocka",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "10 %"
+    },
+    {
+      "shop": "rocka",
+      "code": "ROCKA10",
+      "works": true,
+      "effect": "10 %"
+    },
+    {
+      "shop": "rocka",
+      "code": "WILKOMMEN10",
+      "works": false,
+      "effect": "kein Rabatt"
+    },
+    {
+      "shop": "ruehl",
+      "code": "–",
+      "works": "teils",
+      "effect": "Gutscheine nur mit Kundenkonto einlösbar, Preis ist schon reduziert"
+    },
+    {
+      "shop": "myprotein",
+      "code": "–",
+      "works": "teils",
+      "effect": "Shop sagt: kein Code nötig, Rabatt ist im Preis"
+    }
+  ]
+}
