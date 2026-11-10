@@ -111,11 +111,12 @@ async function checkShop(browser, key, cfg) {
         total = parseTotal(text) ?? total;
         // Wenn ein Shop eine Menschen-Prüfung zeigt, wird der Shop übersprungen – nicht umgangen.
         if (/captcha|Bestätige, dass du ein Mensch bist|verify you are human/i.test(text)) throw new Error('Shop verlangt eine Captcha-Prüfung, Check übersprungen');
-        return { total, line: code ? parseLine(text, code) : '' };
+        return { total, line: code ? parseLine(text, code) : '', url: co.url(), snippet: text.replace(/\s+/g,' ').slice(0, 1500) };
       } finally { await co.close(); }
     };
 
     const base = await run('');
+    if (process.env.DEBUG) res.debug = { url: base.url, snippet: base.snippet };
     if (base.total == null) throw new Error('Kasse lieferte keinen Gesamtpreis');
     res.baseline = base.total;
     const ctrl = await run(CONTROL);

@@ -111,6 +111,16 @@
   .no-list{font-size:13.5px;color:var(--muted);margin:0 0 14px;line-height:1.9}
   .no-list s{display:inline-block;background:#E6E8E3;padding:0 8px;border-radius:999px;margin:0 4px 0 0;color:var(--muted);text-decoration-thickness:1.5px;font-weight:700;font-variation-settings:"wdth" 80}
   .shopcodes summary .best{display:flex;align-items:center;gap:8px;font-weight:400;color:var(--muted);font-size:14px}
+  .live{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 14px}
+  #live-status{font-size:14px;color:var(--muted)}
+  #live-status.run{color:var(--ink);font-weight:600}
+  #live-status.err{color:var(--no);font-weight:600}
+  .tokenbox{background:var(--card);border:2px solid var(--ink);padding:14px 16px;margin:0 0 16px;font-size:14.5px}
+  .tokenbox p{margin:0 0 8px}
+  .tokenbox ol{margin:0 0 12px;padding-left:20px}
+  .tokenbox label{display:block;font-weight:700;margin-bottom:4px}
+  .tokenbox input{width:100%;font:inherit;padding:10px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--paper)}
+  .skip{font-size:14px;color:var(--no);margin:0 0 12px}
   footer{border-top:2px solid var(--ink);padding:16px 0 40px;color:var(--muted);font-size:14px}
   footer p{max-width:62ch;margin:0 0 10px}
 
@@ -145,6 +155,22 @@
     <section aria-labelledby="h-codes" id="codecheck">
       <h3 id="h-codes">Code-Check zur Black Week</h3>
       <p class="lead" id="cc-lead"></p>
+      <div class="live">
+        <button type="button" class="btn primary" id="live-btn">Jetzt live prüfen</button>
+        <span id="live-status" aria-live="polite"></span>
+      </div>
+      <form class="tokenbox" id="tokenbox" hidden>
+        <p><b>Einmalig einrichten.</b> Der Check läuft auf GitHub. Damit der Button ihn starten darf, braucht er einen GitHub-Token. Er wird nur auf diesem Gerät gespeichert.</p>
+        <ol>
+          <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Neuen Token anlegen</a> (Fine-grained).</li>
+          <li>Bei Repository access nur <b>my-project-26/SportSupp</b> wählen.</li>
+          <li>Bei Permissions <b>Actions: Read and write</b> und <b>Contents: Read-only</b> setzen.</li>
+          <li>Token kopieren und hier einfügen.</li>
+        </ol>
+        <label for="tok">GitHub-Token</label>
+        <input id="tok" type="password" autocomplete="off" placeholder="github_pat_…" required>
+        <div class="actions"><button class="btn primary" type="submit">Speichern und prüfen</button><button class="btn" type="button" id="tok-cancel">Abbrechen</button></div>
+      </form>
       <div class="ccstats" id="cc-stats"></div>
       <div class="shopcodes" id="codes"></div>
     </section>
@@ -221,35 +247,122 @@
     try{ localStorage.setItem('sportsupp-cat', cat); }catch(e){}
   }
 
-  // code check grouped by shop
-  const byShop = {};
-  D.codes.forEach(c => (byShop[c.shop] = byShop[c.shop] || []).push(c));
-  const real = D.codes.filter(c=>c.code!=='–');
-  const okAll = real.filter(c=>c.works===true).length;
-  document.getElementById('cc-lead').textContent = `Stand: ${D.codeCheckLabel}. Jeder Code ist einzeln an der Kasse der Shops gelaufen, auch die alten Black-Friday-Codes aus Gutscheinportalen. Funktionierende Codes wurden mit einem zweiten Produkt erneut geprüft.`;
-  document.getElementById('cc-stats').innerHTML = `
-    <div><b>${real.length}</b><span>Codes getestet</span></div>
-    <div><b>${okAll}</b><span>funktionieren</span></div>
-    <div><b>${Object.keys(byShop).length}</b><span>Shops</span></div>`;
-  const pct = s => { const m = s.match(/(\d+)\s?%/); return m ? +m[1] : 0; };
-  const order = Object.keys(byShop).sort((a,b)=>{
-    const ba = Math.max(0,...byShop[a].filter(c=>c.works===true).map(c=>pct(c.effect)));
-    const bb = Math.max(0,...byShop[b].filter(c=>c.works===true).map(c=>pct(c.effect)));
-    return bb-ba;
+  // ---------- Code-Check ----------
+  const REPO = 'my-project-26/SportSupp';
+  const WF = 'codecheck.yml';
+  const fmtTime = iso => new Date(iso).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}) + ' Uhr';
+  const pctTxt = p => p.toLocaleString('de-DE',{maximumFractionDigits:1}) + ' %';
+
+  // Handgeprüfte Daten aus data.json in dasselbe Format bringen wie den Live-Check
+  function fromManual(){
+    const shops = {};
+    D.codes.forEach(c=>{
+      const s = shops[c.shop] = shops[c.shop] || {key:c.shop, name:D.shops[c.shop].name, codes:[], error:null};
+      const m = (c.effect||'').match(/(\d+)\s?%/);
+      s.codes.push({code:c.code, works:c.works, pct: c.works===true && m ? +m[1] : null, note:c.effect});
+    });
+    return {label:`Handprüfung vom ${D.codeCheckLabel}`, live:false, shops:Object.values(shops)};
+  }
+  function fromLive(L){
+    const shops = Object.values(L.shops).map(s=>({
+      key:s.key, name:s.name, error:s.error,
+      controlDirty: s.control && !s.control.clean,
+      product: s.product, baseline: s.baseline,
+      codes: s.codes.filter(c=>!c.error).map(c=>({code:c.code, works:c.works, pct:c.works?c.pct:null, note:c.line||'', fromBanner:c.fromBanner}))
+    }));
+    // Shops ohne Shopify-Kasse bleiben mit ihrem Hinweis aus der Handprüfung drin
+    fromManual().shops.filter(s=>!L.shops[s.key]).forEach(s=>shops.push(s));
+    return {label:`Live geprüft am ${fmtTime(L.checkedAt)} (${L.trigger==='täglich'?'automatischer Tagescheck':'per Button'}, Dauer ${Math.round(L.durationSec/60)} min)`, live:true, shops};
+  }
+
+  function renderCodeCheck(cc){
+    const all = cc.shops.flatMap(s=>s.codes).filter(c=>c.code!=='–');
+    const ok = all.filter(c=>c.works===true).length;
+    document.getElementById('cc-lead').textContent = `${cc.label}. Jeder Code läuft einzeln durch die echte Kasse der Shops, zur Kontrolle zusammen mit einem erfundenen Code. Bestellt wird nichts.`;
+    document.getElementById('cc-stats').innerHTML = `
+      <div><b>${all.length}</b><span>Codes getestet</span></div>
+      <div><b>${ok}</b><span>funktionieren</span></div>
+      <div><b>${cc.shops.length}</b><span>Shops</span></div>`;
+    const bestPct = s => Math.max(0, ...s.codes.filter(c=>c.works===true).map(c=>c.pct||0));
+    const shops = cc.shops.slice().sort((a,b)=>bestPct(b)-bestPct(a));
+    document.getElementById('codes').innerHTML = shops.map((s,idx)=>{
+      const good = s.codes.filter(c=>c.works===true).sort((a,b)=>(b.pct||0)-(a.pct||0));
+      const part = s.codes.filter(c=>c.works==='teils');
+      const no = s.codes.filter(c=>c.works===false);
+      const best = good[0];
+      const promo = D.promos && D.promos[s.key];
+      return `<details${idx<2?' open':''}><summary><span>${esc(s.name)}</span><span class="best">${s.error?'<span>nicht geprüft</span>':best?`${sticker(best.code)}${best.pct?`<span>−${pctTxt(best.pct)}</span>`:''}`:'<span>kein Code wirkt</span>'}</span></summary>
+        ${s.error?`<p class="skip">Diesmal nicht geprüft: ${esc(s.error)}</p>`:''}
+        ${s.controlDirty?`<p class="skip">Achtung: Hier hat auch der erfundene Kontrollcode den Preis verändert. Die Ergebnisse dieses Shops sind unsicher.</p>`:''}
+        ${promo?`<p class="promo">${esc(promo)}</p>`:''}
+        ${good.length||part.length?`<div class="ok-list">${good.concat(part).map(c=>`<div class="ok-item">${c.code==='–'?'<span class="sticker none">kein Code</span>':sticker(c.code)}<span class="eff"><b>${c.works===true?(c.pct?'−'+pctTxt(c.pct):'funktioniert'):'eingeschränkt'}</b>${c.note&&!cc.live?': '+esc(c.note):''}${c.fromBanner?' (aus dem Shop-Banner)':''}</span></div>`).join('')}</div>`:''}
+        ${no.length?`<p class="no-list">Funktionieren nicht: ${no.map(c=>`<s>${esc(c.code)}</s>`).join('')}</p>`:''}
+        ${cc.live&&s.product?`<p class="no-list">Testwarenkorb: ${s.product.qty} × ${esc(s.product.title)} für ${eur(s.baseline)}</p>`:''}
+      </details>`;
+    }).join('');
+  }
+
+  async function loadLive(token){
+    // Mit Token direkt aus dem Repo (sofort aktuell), sonst die veröffentlichte Datei
+    try{
+      if(token){
+        const r = await fetch(`https://api.github.com/repos/${REPO}/contents/codecheck.json?ref=main&t=${Date.now()}`, {headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github.raw+json'}});
+        if(r.ok) return await r.json();
+      }
+      const r2 = await fetch('codecheck.json?t='+Date.now(), {cache:'no-store'});
+      if(r2.ok) return await r2.json();
+    }catch(e){}
+    return null;
+  }
+  let token=null; try{ token = localStorage.getItem('sportsupp-gh-token'); }catch(e){}
+  const L0 = await loadLive(null);
+  renderCodeCheck(L0 ? fromLive(L0) : fromManual());
+
+  const st = document.getElementById('live-status'), btn = document.getElementById('live-btn'), box = document.getElementById('tokenbox');
+  const setSt = (txt, cls) => { st.textContent = txt; st.className = cls||''; };
+  const gh = (path, opts={}) => fetch(`https://api.github.com/repos/${REPO}${path}`, {...opts, headers:{Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json', ...(opts.headers||{})}});
+
+  async function startLive(){
+    btn.disabled = true;
+    const t0 = Date.now();
+    setSt('Starte Prüfung …','run');
+    const r = await gh(`/actions/workflows/${WF}/dispatches`, {method:'POST', body:JSON.stringify({ref:'main'})});
+    if(r.status===401 || r.status===403 || r.status===404){
+      setSt('Der Token wurde abgelehnt. Bitte neu einrichten.','err');
+      try{ localStorage.removeItem('sportsupp-gh-token'); }catch(e){} token=null; box.hidden=false; btn.disabled=false; return;
+    }
+    if(!r.ok){ setSt('GitHub hat den Start abgelehnt ('+r.status+'). Bitte später erneut versuchen.','err'); btn.disabled=false; return; }
+    let runId=null;
+    const tick = setInterval(()=>{ const s=Math.round((Date.now()-t0)/1000); if(runId!==-1) setSt(`Prüfung läuft seit ${Math.floor(s/60)}:${String(s%60).padStart(2,'0')} min. Das dauert meist 4 bis 7 Minuten.`,'run'); },1000);
+    try{
+      for(let i=0;i<120;i++){
+        await new Promise(r=>setTimeout(r,8000));
+        const rr = await gh(`/actions/workflows/${WF}/runs?event=workflow_dispatch&per_page=3`);
+        if(!rr.ok) continue;
+        const runs = (await rr.json()).workflow_runs.filter(x=>new Date(x.created_at).getTime() > t0-60000);
+        const run = runs[0];
+        if(!run) continue;
+        runId = run.id;
+        if(run.status==='completed'){
+          if(run.conclusion!=='success'){ clearInterval(tick); setSt('Die Prüfung ist abgebrochen. Ergebnis unten ist vom letzten erfolgreichen Lauf.','err'); break; }
+          await new Promise(r=>setTimeout(r,4000));
+          const L = await loadLive(token);
+          clearInterval(tick);
+          if(L){ renderCodeCheck(fromLive(L)); setSt('Fertig. Die Liste unten ist jetzt aktuell.',''); }
+          else setSt('Fertig, aber das Ergebnis ließ sich nicht laden. Seite in einer Minute neu laden.','err');
+          break;
+        }
+      }
+    } finally { clearInterval(tick); btn.disabled=false; }
+  }
+  btn.addEventListener('click', ()=>{ if(!token){ box.hidden=false; document.getElementById('tok').focus(); return; } startLive(); });
+  document.getElementById('tok-cancel').addEventListener('click', ()=>{ box.hidden=true; });
+  box.addEventListener('submit', e=>{
+    e.preventDefault();
+    token = document.getElementById('tok').value.trim();
+    try{ localStorage.setItem('sportsupp-gh-token', token); }catch(err){}
+    box.hidden = true; startLive();
   });
-  document.getElementById('codes').innerHTML = order.map((k,idx)=>{
-    const cs = byShop[k];
-    const ok = cs.filter(c=>c.works===true);
-    const part = cs.filter(c=>c.works==='teils');
-    const no = cs.filter(c=>c.works===false);
-    const best = ok[0];
-    const promo = D.promos && D.promos[k];
-    return `<details${idx<2?' open':''}><summary><span>${esc(D.shops[k].name)}</span><span class="best">${best?`<span>bester Code</span>${sticker(best.code)}`:'<span>kein Code nötig</span>'}</span></summary>
-      ${promo?`<p class="promo">${esc(promo)}</p>`:''}
-      ${ok.length||part.length?`<div class="ok-list">${ok.concat(part).map(c=>`<div class="ok-item">${c.code==='–'?'<span class="sticker none">kein Code</span>':sticker(c.code)}<span class="eff"><b>${c.works===true?'funktioniert':'eingeschränkt'}:</b> ${esc(c.effect)}${c.checks>1?', zweimal geprüft':''}</span></div>`).join('')}</div>`:''}
-      ${no.length?`<p class="no-list">Funktionieren nicht: ${no.map(c=>`<s title="${esc(c.effect)}">${esc(c.code)}</s>`).join('')}</p>`:''}
-    </details>`;
-  }).join('');
 
   document.getElementById('foot').innerHTML = `
     <p><b style="color:var(--ink)">So wurde geprüft.</b> ${esc(D.method)}</p>

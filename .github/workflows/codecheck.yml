@@ -7,6 +7,10 @@ on:
         description: "Nur bestimmte Shops (kommagetrennt, leer = alle)"
         required: false
         default: ""
+      debug:
+        description: "Diagnose-Text speichern (1 = ja)"
+        required: false
+        default: ""
   schedule:
     - cron: "17 5 * * *"   # täglich ca. 6:17 / 7:17 Uhr deutscher Zeit
 
@@ -37,6 +41,7 @@ jobs:
       - name: Codes an der Kasse prüfen
         env:
           SHOPS: ${{ github.event.inputs.shops }}
+          DEBUG: ${{ github.event.inputs.debug }}
           TRIGGER: ${{ github.event_name == 'schedule' && 'täglich' || 'Button' }}
         run: node scripts/codecheck.mjs
 
