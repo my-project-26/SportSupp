@@ -264,12 +264,17 @@
     return {label:`Handprüfung vom ${D.codeCheckLabel}`, live:false, shops:Object.values(shops)};
   }
   function fromLive(L){
-    const shops = Object.values(L.shops).map(s=>({
-      key:s.key, name:s.name, error:s.error,
-      controlDirty: s.control && !s.control.clean,
-      product: s.product, baseline: s.baseline,
-      codes: s.codes.filter(c=>!c.error).map(c=>({code:c.code, works:c.works, pct:c.works?c.pct:null, note:c.line||'', fromBanner:c.fromBanner}))
-    }));
+    const manual = Object.fromEntries(fromManual().shops.map(s=>[s.key,s]));
+    const shops = Object.values(L.shops).map(s=>{
+      // Shops mit Sicherheitsabfrage: Ergebnis der Handprüfung zeigen und das klar sagen
+      if(s.error && manual[s.key]) return {...manual[s.key], blockedNote: s.blocked ? `${s.error} Unten steht deshalb die Handprüfung vom ${D.codeCheckLabel}.` : `Diesmal nicht geprüft (${s.error}). Unten steht die Handprüfung vom ${D.codeCheckLabel}.`, manualFallback:true};
+      return {
+        key:s.key, name:s.name, error:s.error,
+        controlDirty: s.control && !s.control.clean,
+        product: s.product, baseline: s.baseline, currency: s.currency,
+        codes: s.codes.filter(c=>!c.error).map(c=>({code:c.code, works:c.works, pct:c.works?c.pct:null, note:c.line||'', fromBanner:c.fromBanner}))
+      };
+    });
     // Shops ohne Shopify-Kasse bleiben mit ihrem Hinweis aus der Handprüfung drin
     fromManual().shops.filter(s=>!L.shops[s.key]).forEach(s=>shops.push(s));
     return {label:`Live geprüft am ${fmtTime(L.checkedAt)} (${L.trigger==='täglich'?'automatischer Tagescheck':'per Button'}, Dauer ${Math.round(L.durationSec/60)} min)`, live:true, shops};
@@ -292,12 +297,12 @@
       const best = good[0];
       const promo = D.promos && D.promos[s.key];
       return `<details${idx<2?' open':''}><summary><span>${esc(s.name)}</span><span class="best">${s.error?'<span>nicht geprüft</span>':best?`${sticker(best.code)}${best.pct?`<span>−${pctTxt(best.pct)}</span>`:''}`:'<span>kein Code wirkt</span>'}</span></summary>
-        ${s.error?`<p class="skip">Diesmal nicht geprüft: ${esc(s.error)}</p>`:''}
+        ${s.blockedNote?`<p class="skip">${esc(s.blockedNote)}</p>`:s.error?`<p class="skip">Diesmal nicht geprüft: ${esc(s.error)}</p>`:''}
         ${s.controlDirty?`<p class="skip">Achtung: Hier hat auch der erfundene Kontrollcode den Preis verändert. Die Ergebnisse dieses Shops sind unsicher.</p>`:''}
         ${promo?`<p class="promo">${esc(promo)}</p>`:''}
-        ${good.length||part.length?`<div class="ok-list">${good.concat(part).map(c=>`<div class="ok-item">${c.code==='–'?'<span class="sticker none">kein Code</span>':sticker(c.code)}<span class="eff"><b>${c.works===true?(c.pct?'−'+pctTxt(c.pct):'funktioniert'):'eingeschränkt'}</b>${c.note&&!cc.live?': '+esc(c.note):''}${c.fromBanner?' (aus dem Shop-Banner)':''}</span></div>`).join('')}</div>`:''}
+        ${good.length||part.length?`<div class="ok-list">${good.concat(part).map(c=>`<div class="ok-item">${c.code==='–'?'<span class="sticker none">kein Code</span>':sticker(c.code)}<span class="eff"><b>${c.works===true?(c.pct?'−'+pctTxt(c.pct):'funktioniert'):'eingeschränkt'}</b>${c.note&&(!cc.live||s.manualFallback)?': '+esc(c.note):''}${c.fromBanner?' (aus dem Shop-Banner)':''}</span></div>`).join('')}</div>`:''}
         ${no.length?`<p class="no-list">Funktionieren nicht: ${no.map(c=>`<s>${esc(c.code)}</s>`).join('')}</p>`:''}
-        ${cc.live&&s.product?`<p class="no-list">Testwarenkorb: ${s.product.qty} × ${esc(s.product.title)} für ${eur(s.baseline)}</p>`:''}
+        ${cc.live&&s.product&&s.baseline?`<p class="no-list">Testwarenkorb: ${s.product.qty} × ${esc(s.product.title)} für ${s.baseline.toLocaleString('de-DE',{minimumFractionDigits:2})} ${s.currency==='EUR'||!s.currency?'€':esc(s.currency)}</p>`:''}
       </details>`;
     }).join('');
   }

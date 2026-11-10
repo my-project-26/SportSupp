@@ -25,20 +25,15 @@ const only = (process.env.SHOPS || '').split(',').map(s => s.trim()).filter(Bool
 const num = s => s == null ? null : parseFloat(String(s).replace(/\s/g, '').replace(/\./g, '').replace(',', '.'));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-// Gesamtbetrag aus dem Checkout-Text lesen (deutsch und englisch)
+// Gesamtbetrag aus dem Checkout-Text lesen (deutsch/englisch, jede Währung)
 function parseTotal(text) {
-  const t = text.replace(/ /g, ' ');
-  const pats = [
-    /Gesamt\s*\n\s*EUR\s*\n\s*€?\s*([\d.,]+)\s*€?/g,
-    /Total\s*\n\s*EUR\s*\n\s*€?\s*([\d.,]+)\s*€?/g,
-  ];
-  for (const re of pats) {
-    let m, last = null;
-    while ((m = re.exec(t))) last = m[1];
-    if (last) return num(last);
-  }
-  return null;
+  const t = text.replace(/\u00a0/g, ' ');
+  const re = /(?:Gesamt|Total)\s*\n\s*([A-Z]{3})\s*\n\s*[^\d\n]{0,3}\s*([\d.,]+)/g;
+  let m, last = null;
+  while ((m = re.exec(t))) last = { cur: m[1], val: num(m[2]) };
+  return last;
 }
+const BLOCKED = /Verbindung muss verifiziert werden|verify your connection|Verifying your connection/i;
 
 // Zeile mit dem Code-Rabatt (z. B. "DROPTIME 30% (-21,00 €)" oder "Bestellungsrabatt DROPTIME − 6,00 €")
 function parseLine(text, code) {
@@ -74,7 +69,7 @@ async function checkShop(browser, key, cfg) {
     await sleep(2500);
     // Land auf Deutschland stellen, damit Preise in EUR und mit deutscher Steuer kommen
     await page.evaluate(async () => {
-      const fd = new FormData(); fd.append('form_type', 'localization'); fd.append('country_code', 'DE'); fd.append('return_to', '/');
+      const fd = new FormData(); fd.append('form_type', 'localization'); fd.append('_method', 'put'); fd.append('country_code', 'DE'); fd.append('return_to', '/');
       try { await fetch('/localization', { method: 'POST', body: fd }); } catch (e) {}
     });
     const home = await page.evaluate(() => document.body.innerText);
@@ -99,37 +94,46 @@ async function checkShop(browser, key, cfg) {
       const co = await ctx.newPage();
       try {
         await co.goto(cfg.origin + '/checkout' + (code ? '?discount=' + encodeURIComponent(code) : ''), { waitUntil: 'domcontentloaded', timeout: 45000 });
-        let text = '', total = null;
+        const read = () => co.evaluate(() => document.body ? document.body.innerText : '');
+        let text = '', tot = null;
         for (let i = 0; i < 40; i++) {
           await sleep(750);
-          text = await co.evaluate(() => document.body ? document.body.innerText : '');
-          total = parseTotal(text);
-          if (total != null) break;
+          text = await read();
+          // Schutzseiten der Shops werden nicht umgangen: Shop wird übersprungen
+          if (BLOCKED.test(text)) throw new Error('BLOCKED');
+          if (/captcha|Bestätige, dass du ein Mensch bist|verify you are human/i.test(text)) throw new Error('BLOCKED');
+          tot = parseTotal(text);
+          if (tot) break;
         }
-        await sleep(2500); // Rabatt wird oft kurz nach dem Laden eingerechnet
-        text = await co.evaluate(() => document.body ? document.body.innerText : '');
-        total = parseTotal(text) ?? total;
-        // Wenn ein Shop eine Menschen-Prüfung zeigt, wird der Shop übersprungen – nicht umgangen.
-        if (/captcha|Bestätige, dass du ein Mensch bist|verify you are human/i.test(text)) throw new Error('Shop verlangt eine Captcha-Prüfung, Check übersprungen');
-        return { total, line: code ? parseLine(text, code) : '', url: co.url(), snippet: text.replace(/\s+/g,' ').slice(0, 1500) };
+        // Rabatte werden oft erst nach dem Laden eingerechnet: bis zu 15 s auf die Code-Zeile warten
+        if (code && tot) {
+          for (let i = 0; i < 20; i++) {
+            await sleep(750);
+            text = await read();
+            if (parseLine(text, code)) { await sleep(1500); text = await read(); break; }
+          }
+        } else { await sleep(2000); text = await read(); }
+        tot = parseTotal(text) || tot;
+        return { total: tot ? tot.val : null, currency: tot ? tot.cur : null, line: code ? parseLine(text, code) : '', url: co.url(), snippet: text.replace(/\s+/g, ' ').slice(0, 1500) };
       } finally { await co.close(); }
     };
 
     const base = await run('');
     if (process.env.DEBUG) res.debug = { url: base.url, snippet: base.snippet };
     if (base.total == null) throw new Error('Kasse lieferte keinen Gesamtpreis');
-    res.baseline = base.total;
+    res.baseline = base.total; res.currency = base.currency;
     const ctrl = await run(CONTROL);
     res.control = { total: ctrl.total, clean: ctrl.total != null && Math.abs(ctrl.total - base.total) < 0.01 };
 
     for (const code of codes) {
       let r;
-      try { r = await run(code); } catch (e) { if (/Captcha/.test(e.message)) throw e; res.codes.push({ code, error: e.message }); continue; }
+      try { r = await run(code); } catch (e) { if (e.message === 'BLOCKED') throw e; res.codes.push({ code, error: e.message }); continue; }
       const pct = r.total != null && res.baseline ? Math.round((1 - r.total / res.baseline) * 1000) / 10 : null;
       res.codes.push({ code, total: r.total, pct, works: pct != null && pct > 0.4, line: r.line, fromBanner: res.bannerCodes.includes(code) });
     }
   } catch (e) {
-    res.error = e.message;
+    res.blocked = e.message === 'BLOCKED';
+    res.error = res.blocked ? 'Der Shop zeigt automatischen Prüfungen eine Sicherheitsabfrage. Die wird nicht umgangen.' : e.message;
   } finally {
     await ctx.close();
   }
