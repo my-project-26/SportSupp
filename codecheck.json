@@ -1,0 +1,473 @@
+{
+  "checkedAt": "2026-11-10T19:45:50.567Z",
+  "durationSec": 201,
+  "trigger": "Button",
+  "control": "XQFAKE981978",
+  "shops": {
+    "more": {
+      "key": "more",
+      "name": "More Nutrition",
+      "origin": "https://morenutrition.de",
+      "product": {
+        "id": 51094752854180,
+        "title": "Chunky Flavour – Milchreis-Zimt / 150g",
+        "price": 13.99,
+        "qty": 5
+      },
+      "baseline": null,
+      "control": null,
+      "codes": [],
+      "bannerCodes": [],
+      "error": "Kasse lieferte keinen Gesamtpreis"
+    },
+    "peak": {
+      "key": "peak",
+      "name": "Peak",
+      "origin": "https://www.peak.ag",
+      "product": {
+        "id": 49446922256719,
+        "title": "Creatine Monohydrate",
+        "price": 19.9,
+        "qty": 3
+      },
+      "baseline": null,
+      "control": null,
+      "codes": [],
+      "bannerCodes": [
+        "GOLDEN"
+      ],
+      "error": "Kasse lieferte keinen Gesamtpreis"
+    },
+    "bodylab": {
+      "key": "bodylab",
+      "name": "Bodylab24",
+      "origin": "https://www.bodylab24.de",
+      "product": {
+        "id": 42053603950705,
+        "title": "Creatine Powder (500g)",
+        "price": 11.11,
+        "qty": 6
+      },
+      "baseline": 66.66,
+      "control": {
+        "total": 66.66,
+        "clean": true
+      },
+      "codes": [
+        {
+          "code": "DROPTIME",
+          "total": 51,
+          "pct": 23.5,
+          "works": true,
+          "line": "DROPTIME (-15,66 €)",
+          "fromBanner": false
+        },
+        {
+          "code": "SINGLEMAX",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": true
+        },
+        {
+          "code": "BLACK44",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "BLACK50",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBER44",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBER30ALL",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "PROTEIN",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "code": "SUPPLIGATOR",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "BLACKWEEK",
+          "total": null,
+          "pct": null,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "BLACKFRIDAY",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "BLACK",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBER",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBERMONDAY",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "code": "WELCOME10",
+          "total": 66.66,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "WILLKOMMEN10",
+          "total": null,
+          "pct": null,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        }
+      ],
+      "bannerCodes": [
+        "PROTEIN",
+        "SINGLEMAX"
+      ],
+      "error": null
+    },
+    "ironbrothers": {
+      "key": "ironbrothers",
+      "name": "Iron Brothers",
+      "origin": "https://www.ironbrothers-shop.com",
+      "product": {
+        "id": 56850283069705,
+        "title": "Creatine Monohydrate - Double Pack – Unflavoured / 2x 1.000g Beutel",
+        "price": 23,
+        "qty": 3
+      },
+      "baseline": null,
+      "control": null,
+      "codes": [],
+      "bannerCodes": [],
+      "error": "Kasse lieferte keinen Gesamtpreis"
+    },
+    "esn": {
+      "key": "esn",
+      "name": "ESN",
+      "origin": "https://www.esn.com",
+      "product": {
+        "id": 47947644895547,
+        "title": "Ultrapure Kreatin Pulver – Neutral / 500g",
+        "price": 29.9,
+        "qty": 3
+      },
+      "baseline": 89.7,
+      "control": {
+        "total": 89.7,
+        "clean": true
+      },
+      "codes": [
+        {
+          "code": "DROPTIME",
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "ESN",
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "ESN10",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "JETZT",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "code": "SUPPLIGATOR",
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "BLACKWEEK",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACKFRIDAY",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACK",
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBER",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "CYBERMONDAY",
+          "total": null,
+          "pct": null,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "WELCOME10",
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "WILLKOMMEN10",
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        }
+      ],
+      "bannerCodes": [
+        "JETZT"
+      ],
+      "error": null
+    },
+    "naturecan": {
+      "key": "naturecan",
+      "name": "Naturecan",
+      "origin": "https://www.naturecan.de",
+      "product": {
+        "id": 39794641666123,
+        "title": "Kreatin Monohydrat 100% Pur – 500 g",
+        "price": 26.99,
+        "qty": 1
+      },
+      "baseline": null,
+      "control": null,
+      "codes": [],
+      "bannerCodes": [],
+      "error": "Kasse lieferte keinen Gesamtpreis"
+    },
+    "gannikus": {
+      "key": "gannikus",
+      "name": "Gannikus",
+      "origin": "https://www.gannikus-shop.com",
+      "product": {
+        "id": 47465948643676,
+        "title": "VERUM WHEY ISOLATE - 1kg – Vanillecreme",
+        "price": 37.99,
+        "qty": 2
+      },
+      "baseline": 75.98,
+      "control": {
+        "total": 75.98,
+        "clean": true
+      },
+      "codes": [
+        {
+          "code": "SHOP",
+          "total": 68.39,
+          "pct": 10,
+          "works": true,
+          "line": "SHOP − 7,59 €",
+          "fromBanner": true
+        },
+        {
+          "code": "DROPTIME",
+          "total": 68.39,
+          "pct": 10,
+          "works": true,
+          "line": "DROPTIME − 7,59 €",
+          "fromBanner": false
+        },
+        {
+          "code": "GANNIKUS10",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "SUPPLIGATOR",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACKWEEK",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACKFRIDAY",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACK",
+          "total": 75.98,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBER",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "CYBERMONDAY",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "WELCOME10",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "WILLKOMMEN10",
+          "total": null,
+          "pct": null,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        }
+      ],
+      "bannerCodes": [
+        "SHOP"
+      ],
+      "error": null
+    },
+    "rocka": {
+      "key": "rocka",
+      "name": "Rocka Nutrition",
+      "origin": "https://www.rockanutrition.de",
+      "product": {
+        "id": 53347018637579,
+        "title": "Flavor Powder – Peach Yogurt / 90g",
+        "price": 8.99,
+        "qty": 3
+      },
+      "baseline": 26.97,
+      "control": {
+        "total": 26.97,
+        "clean": true
+      },
+      "codes": [
+        {
+          "code": "DROPTIME",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "ROCKA10",
+          "total": 24.28,
+          "pct": 10,
+          "works": true,
+          "line": "ROCKA10 − 2,69 €",
+          "fromBanner": false
+        },
+        {
+          "code": "ROCKA",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "ADVENT15",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "code": "SUPPLIGATOR",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACKWEEK",
+          "total": 26.97,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "BLACKFRIDAY",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+        },
+        {
+          "code": "BLACK",
+          "total": 26.97,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBER",
+          "total": null,
+          "pct": null,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "CYBERMONDAY",
+          "total": 26.97,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
+        },
+        {
+          "code": "WELCOME10",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "code": "WILLKOMMEN10",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        }
+      ],
+      "bannerCodes": [],
+      "error": null
+    }
+  }
+}
