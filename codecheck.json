@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-11-10T19:45:50.567Z",
-  "durationSec": 201,
+  "checkedAt": "2026-11-10T19:49:49.060Z",
+  "durationSec": 146,
   "trigger": "Button",
-  "control": "XQFAKE981978",
+  "control": "XQFAKE757017",
   "shops": {
     "more": {
       "key": "more",
@@ -18,7 +18,11 @@
       "control": null,
       "codes": [],
       "bannerCodes": [],
-      "error": "Kasse lieferte keinen Gesamtpreis"
+      "error": "Kasse lieferte keinen Gesamtpreis",
+      "debug": {
+        "url": "https://morenutrition.de/",
+        "snippet": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst"
+      }
     },
     "peak": {
       "key": "peak",
@@ -36,138 +40,11 @@
       "bannerCodes": [
         "GOLDEN"
       ],
-      "error": "Kasse lieferte keinen Gesamtpreis"
-    },
-    "bodylab": {
-      "key": "bodylab",
-      "name": "Bodylab24",
-      "origin": "https://www.bodylab24.de",
-      "product": {
-        "id": 42053603950705,
-        "title": "Creatine Powder (500g)",
-        "price": 11.11,
-        "qty": 6
-      },
-      "baseline": 66.66,
-      "control": {
-        "total": 66.66,
-        "clean": true
-      },
-      "codes": [
-        {
-          "code": "DROPTIME",
-          "total": 51,
-          "pct": 23.5,
-          "works": true,
-          "line": "DROPTIME (-15,66 €)",
-          "fromBanner": false
-        },
-        {
-          "code": "SINGLEMAX",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": true
-        },
-        {
-          "code": "BLACK44",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "BLACK50",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBER44",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBER30ALL",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "PROTEIN",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
-        },
-        {
-          "code": "SUPPLIGATOR",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "BLACKWEEK",
-          "total": null,
-          "pct": null,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "BLACKFRIDAY",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "BLACK",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBER",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBERMONDAY",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
-        },
-        {
-          "code": "WELCOME10",
-          "total": 66.66,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "WILLKOMMEN10",
-          "total": null,
-          "pct": null,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        }
-      ],
-      "bannerCodes": [
-        "PROTEIN",
-        "SINGLEMAX"
-      ],
-      "error": null
+      "error": "Kasse lieferte keinen Gesamtpreis",
+      "debug": {
+        "url": "https://www.peak.ag/",
+        "snippet": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst"
+      }
     },
     "ironbrothers": {
       "key": "ironbrothers",
@@ -183,7 +60,11 @@
       "control": null,
       "codes": [],
       "bannerCodes": [],
-      "error": "Kasse lieferte keinen Gesamtpreis"
+      "error": "Kasse lieferte keinen Gesamtpreis",
+      "debug": {
+        "url": "https://www.ironbrothers-shop.com/checkouts/cn/hWNIzsu9k2pUoR935wSO3vc8/de-us?_r=AQABABS24xUM64TNQrgsdH5uBJPuZG1sam8mVMsOPjiWXvWVtfYf&auto_redirect=false&edge_redirect=true&skip_shop_pay=true",
+        "snippet": "Direkt zum Inhalt Zum Onlineshop navigieren Iron Brothers Checkout Express Checkout ODER Kontakt Anmelden E-Mail oder Mobiltelefonnummer Wird für deine Bestellbestätigung und Warenkorberinnerungen verwendet Neuigkeiten und Angebote via E-Mail erhalten Lieferung Land / Region Deutschland Österreich Schweiz Luxemburg Niederlande Ägypten Äquatorialguinea Äthiopien Afghanistan Ålandinseln Albanien Algerien Amerikanische Überseeinseln Andorra Angola Anguilla Antigua und Barbuda Argentinien Armenien Aruba Ascension Aserbaidschan Australien Bahamas Bahrain Bangladesch Barbados Belarus Belgien Belize Benin Bermuda Bhutan Bolivien Bosnien und Herzegowina Botsuana Brasilien Britische Jungferninseln Britisches Territorium im Indischen Ozean Brunei Darussalam Bulgarien Burkina Faso Burundi Cabo Verde Chile China Cookinseln Costa Rica Curaçao Côte d’Ivoire Dänemark Deutschland Dominica Dominikanische Republik Dschibuti Ecuador El Salvador Eritrea Estland Eswatini Färöer Falklandinseln Fidschi Finnland Frankreich Französisch-Guayana Französisch-Polynesien Französische Südgebiete Gabun Gambia Georgien Ghana Gibraltar Grenada Griechenland Grönland Guadeloupe Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Indien Indonesien Irak Irland Island Isle of Man Israel Italien Jamaika Japan Jemen Jersey Jordanien Kaimaninseln Kambodscha Kamerun Kanada Karibische Niederlande Kasachstan Katar Kenia Kirgisistan Kiribati Kokosinseln Kolumbien Komoren Kongo-Brazzaville Kongo-Kinshasa Kosovo "
+      }
     },
     "esn": {
       "key": "esn",
@@ -211,15 +92,11 @@
         },
         {
           "code": "ESN",
-          "total": 89.7,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
         },
         {
           "code": "ESN10",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
         },
         {
           "code": "JETZT",
@@ -227,6 +104,10 @@
         },
         {
           "code": "SUPPLIGATOR",
+          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        },
+        {
+          "code": "BLACKWEEK",
           "total": 89.7,
           "pct": 0,
           "works": false,
@@ -234,29 +115,33 @@
           "fromBanner": false
         },
         {
-          "code": "BLACKWEEK",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
           "code": "BLACKFRIDAY",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
         },
         {
           "code": "BLACK",
-          "total": 89.7,
-          "pct": 0,
+          "total": null,
+          "pct": null,
           "works": false,
           "line": "",
           "fromBanner": false
         },
         {
           "code": "CYBER",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
+          "total": 89.7,
+          "pct": 0,
+          "works": false,
+          "line": "",
+          "fromBanner": false
         },
         {
           "code": "CYBERMONDAY",
-          "total": null,
-          "pct": null,
+          "total": 89.7,
+          "pct": 0,
           "works": false,
           "line": "",
           "fromBanner": false
@@ -281,7 +166,11 @@
       "bannerCodes": [
         "JETZT"
       ],
-      "error": null
+      "error": null,
+      "debug": {
+        "url": "https://www.esn.com/checkouts/cn/hWNIzsuTWSLwzfZsXLw6r0O0/de-de?_r=AQABsojx7iG_GcoBg-CCZLcu3F0_5wZewSYg_zYMLfN9hxBsG0MZ&auto_redirect=false&edge_redirect=true&skip_shop_pay=true",
+        "snippet": "Direkt zum Inhalt Zum Onlineshop navigieren ESN Checkout Express Checkout ODER Kontakt Anmelden E-Mail * Wird für deine Bestellbestätigung und Warenkorberinnerungen verwendet Lieferung Land / Region Deutschland Österreich Niederlande Frankreich Schweiz Belgien Dänemark Deutschland Finnland Frankreich Irland Italien Luxemburg Niederlande Österreich Polen Portugal Schweden Schweiz Spanien Vereinigtes Königreich Zypern Vorname Nachname Firma (optional) Straße und Hausnummer Zusätzliche Adressangaben (optional) Postleitzahl Stadt Handynummer (optional) Falls wir dich zu deiner Bestellung kontaktieren müssen Versand Gib deine Lieferadresse ein, um verfügbare Versandarten anzuzeigen. Zahlung Alle Transaktionen sind sicher und verschlüsselt. Kreditkarte +2 Bezahlen mit Klarna Wird geladen … Rechnungsadresse Mit der Lieferadresse identisch Eine andere Rechnungsadresse verwenden Meine Zahlungsinformationen bei ESN für einen schnelleren Checkout speichern Rabatt hinzufügen Meine Daten zum schnelleren Bezahlen speichern Bestellung abschließen Bestellung überprüfen 89,70 € Absenden Geschäftsbedingungen und Richtlinien Bestellübersicht Warenkorb Produktbild Beschreibung Anzahl Preis Anzahl 3 Ultrapure Kreatin Pulver Neutral / 500g 59,80 €/kg 3 89,70 € Für weitere Artikel scrollen Rabattcode oder Gutschein Rabattcode oder Gutschein Anwenden Absenden Zurück zum Bestellabschluss Kostenüberblick Artikel Wert Zwischensumme 89,70 € Versand Gesamt EUR 89,70 € inkl. MwSt Öffnet externe Webseite i"
+      }
     },
     "naturecan": {
       "key": "naturecan",
@@ -297,177 +186,11 @@
       "control": null,
       "codes": [],
       "bannerCodes": [],
-      "error": "Kasse lieferte keinen Gesamtpreis"
-    },
-    "gannikus": {
-      "key": "gannikus",
-      "name": "Gannikus",
-      "origin": "https://www.gannikus-shop.com",
-      "product": {
-        "id": 47465948643676,
-        "title": "VERUM WHEY ISOLATE - 1kg – Vanillecreme",
-        "price": 37.99,
-        "qty": 2
-      },
-      "baseline": 75.98,
-      "control": {
-        "total": 75.98,
-        "clean": true
-      },
-      "codes": [
-        {
-          "code": "SHOP",
-          "total": 68.39,
-          "pct": 10,
-          "works": true,
-          "line": "SHOP − 7,59 €",
-          "fromBanner": true
-        },
-        {
-          "code": "DROPTIME",
-          "total": 68.39,
-          "pct": 10,
-          "works": true,
-          "line": "DROPTIME − 7,59 €",
-          "fromBanner": false
-        },
-        {
-          "code": "GANNIKUS10",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "SUPPLIGATOR",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "BLACKWEEK",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "BLACKFRIDAY",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "BLACK",
-          "total": 75.98,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBER",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "CYBERMONDAY",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "WELCOME10",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "WILLKOMMEN10",
-          "total": null,
-          "pct": null,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        }
-      ],
-      "bannerCodes": [
-        "SHOP"
-      ],
-      "error": null
-    },
-    "rocka": {
-      "key": "rocka",
-      "name": "Rocka Nutrition",
-      "origin": "https://www.rockanutrition.de",
-      "product": {
-        "id": 53347018637579,
-        "title": "Flavor Powder – Peach Yogurt / 90g",
-        "price": 8.99,
-        "qty": 3
-      },
-      "baseline": 26.97,
-      "control": {
-        "total": 26.97,
-        "clean": true
-      },
-      "codes": [
-        {
-          "code": "DROPTIME",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "ROCKA10",
-          "total": 24.28,
-          "pct": 10,
-          "works": true,
-          "line": "ROCKA10 − 2,69 €",
-          "fromBanner": false
-        },
-        {
-          "code": "ROCKA",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "ADVENT15",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
-        },
-        {
-          "code": "SUPPLIGATOR",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "BLACKWEEK",
-          "total": 26.97,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "BLACKFRIDAY",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation."
-        },
-        {
-          "code": "BLACK",
-          "total": 26.97,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBER",
-          "total": null,
-          "pct": null,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "CYBERMONDAY",
-          "total": 26.97,
-          "pct": 0,
-          "works": false,
-          "line": "",
-          "fromBanner": false
-        },
-        {
-          "code": "WELCOME10",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
-        },
-        {
-          "code": "WILLKOMMEN10",
-          "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
-        }
-      ],
-      "bannerCodes": [],
-      "error": null
+      "error": "Kasse lieferte keinen Gesamtpreis",
+      "debug": {
+        "url": "https://www.naturecan.de/",
+        "snippet": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst"
+      }
     }
   }
 }
