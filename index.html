@@ -96,6 +96,21 @@
   .crow .eff{grid-column:1 / -1;font-size:14px;color:var(--muted);margin-top:-2px}
   .crow + .crow{border-top:1px dashed var(--rule);padding-top:12px}
 
+  header.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .jump{font-weight:700;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+  .ccstats{display:flex;gap:0;border:2px solid var(--ink);margin:0 0 16px;background:var(--card)}
+  .ccstats div{flex:1;padding:10px 12px}
+  .ccstats div + div{border-left:2px solid var(--ink)}
+  .ccstats b{display:block;font-weight:900;font-variation-settings:"wdth" 62;font-size:34px;line-height:1}
+  .ccstats span{font-size:13px;color:var(--muted)}
+  .promo{font-size:14.5px;margin:0 0 12px;padding:8px 10px;background:#EEF0EB;border-left:4px solid var(--ink)}
+  .ok-list{display:grid;gap:10px;margin:0 0 12px}
+  .ok-item{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center}
+  .ok-item .eff{font-size:14px;color:var(--muted)}
+  .ok-item .eff b{color:var(--ink);font-weight:600}
+  .no-list{font-size:13.5px;color:var(--muted);margin:0 0 14px;line-height:1.9}
+  .no-list s{display:inline-block;background:#E6E8E3;padding:0 8px;border-radius:999px;margin:0 4px 0 0;color:var(--muted);text-decoration-thickness:1.5px;font-weight:700;font-variation-settings:"wdth" 80}
+  .shopcodes summary .best{display:flex;align-items:center;gap:8px;font-weight:400;color:var(--muted);font-size:14px}
   footer{border-top:2px solid var(--ink);padding:16px 0 40px;color:var(--muted);font-size:14px}
   footer p{max-width:62ch;margin:0 0 10px}
 
@@ -109,6 +124,7 @@
 <div class="wrap">
   <header class="top">
     <p class="brand">SportSupp<span id="stand"></span></p>
+    <a class="jump" href="#codecheck">Zum Code-Check</a>
   </header>
 
   <nav class="switch" aria-label="Produktart">
@@ -126,9 +142,10 @@
       <ol class="rank" id="rank"></ol>
     </section>
 
-    <section aria-labelledby="h-codes">
-      <h3 id="h-codes">Rabattcodes je Shop</h3>
-      <p class="lead">Auch die Codes, die nicht funktionieren. So musst du sie nicht selbst ausprobieren.</p>
+    <section aria-labelledby="h-codes" id="codecheck">
+      <h3 id="h-codes">Code-Check zur Black Week</h3>
+      <p class="lead" id="cc-lead"></p>
+      <div class="ccstats" id="cc-stats"></div>
       <div class="shopcodes" id="codes"></div>
     </section>
   </main>
@@ -204,17 +221,33 @@
     try{ localStorage.setItem('sportsupp-cat', cat); }catch(e){}
   }
 
-  // codes grouped by shop
+  // code check grouped by shop
   const byShop = {};
   D.codes.forEach(c => (byShop[c.shop] = byShop[c.shop] || []).push(c));
-  document.getElementById('codes').innerHTML = Object.entries(byShop).map(([k,cs])=>{
-    const ok = cs.filter(c=>c.works===true).length;
-    return `<details><summary><span>${esc(D.shops[k].name)}</span><span class="count">${ok} von ${cs.length} funktionieren</span></summary>
-      ${cs.map(c=>{
-        const st = c.works===true?['ok','funktioniert']:c.works===false?['no','funktioniert nicht']:['teils','eingeschränkt'];
-        const chip = c.code==='–' ? '<span class="sticker none">kein Code</span>' : (c.works===false ? `<span class="sticker none">${esc(c.code)}</span>` : sticker(c.code));
-        return `<div class="crow">${chip}<span class="status ${st[0]}">${st[1]}</span><div class="eff">${esc(c.effect)}</div></div>`;
-      }).join('')}
+  const real = D.codes.filter(c=>c.code!=='–');
+  const okAll = real.filter(c=>c.works===true).length;
+  document.getElementById('cc-lead').textContent = `Stand: ${D.codeCheckLabel}. Jeder Code ist einzeln an der Kasse der Shops gelaufen, auch die alten Black-Friday-Codes aus Gutscheinportalen. Funktionierende Codes wurden mit einem zweiten Produkt erneut geprüft.`;
+  document.getElementById('cc-stats').innerHTML = `
+    <div><b>${real.length}</b><span>Codes getestet</span></div>
+    <div><b>${okAll}</b><span>funktionieren</span></div>
+    <div><b>${Object.keys(byShop).length}</b><span>Shops</span></div>`;
+  const pct = s => { const m = s.match(/(\d+)\s?%/); return m ? +m[1] : 0; };
+  const order = Object.keys(byShop).sort((a,b)=>{
+    const ba = Math.max(0,...byShop[a].filter(c=>c.works===true).map(c=>pct(c.effect)));
+    const bb = Math.max(0,...byShop[b].filter(c=>c.works===true).map(c=>pct(c.effect)));
+    return bb-ba;
+  });
+  document.getElementById('codes').innerHTML = order.map((k,idx)=>{
+    const cs = byShop[k];
+    const ok = cs.filter(c=>c.works===true);
+    const part = cs.filter(c=>c.works==='teils');
+    const no = cs.filter(c=>c.works===false);
+    const best = ok[0];
+    const promo = D.promos && D.promos[k];
+    return `<details${idx<2?' open':''}><summary><span>${esc(D.shops[k].name)}</span><span class="best">${best?`<span>bester Code</span>${sticker(best.code)}`:'<span>kein Code nötig</span>'}</span></summary>
+      ${promo?`<p class="promo">${esc(promo)}</p>`:''}
+      ${ok.length||part.length?`<div class="ok-list">${ok.concat(part).map(c=>`<div class="ok-item">${c.code==='–'?'<span class="sticker none">kein Code</span>':sticker(c.code)}<span class="eff"><b>${c.works===true?'funktioniert':'eingeschränkt'}:</b> ${esc(c.effect)}${c.checks>1?', zweimal geprüft':''}</span></div>`).join('')}</div>`:''}
+      ${no.length?`<p class="no-list">Funktionieren nicht: ${no.map(c=>`<s title="${esc(c.effect)}">${esc(c.code)}</s>`).join('')}</p>`:''}
     </details>`;
   }).join('');
 

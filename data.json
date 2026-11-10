@@ -1,7 +1,7 @@
 {
   "updated": "2026-11-10",
   "updatedLabel": "10. November 2026, abends",
-  "method": "Jeder Preis wurde im echten Checkout des Herstellers geprüft: Produkt in den Warenkorb, Code an der Kasse eingegeben, Endpreis abgelesen. Zur Kontrolle lief bei jedem Shop zusätzlich ein erfundener Code mit, damit ein alter Rabatt im Warenkorb nicht als Treffer zählt. Versandkosten sind nicht eingerechnet.",
+  "method": "Jeder Preis wurde im echten Checkout des Herstellers geprüft: Produkt in den Warenkorb, Code an der Kasse eingegeben, Endpreis abgelesen. Zur Kontrolle lief bei jedem Shop zusätzlich ein erfundener Code mit, damit ein alter Rabatt im Warenkorb nicht als Treffer zählt. Versandkosten sind nicht eingerechnet. Für den Code-Check lief jeder gefundene Code einzeln durch die Kasse; die Codes, die funktionieren, habe ich mit einem zweiten Produkt noch einmal geprüft.",
   "shops": {
     "ironbrothers": {
       "name": "Iron Brothers",
@@ -128,7 +128,7 @@
       "final": 15.92,
       "url": "https://www.peak.ag/products/creatin-monohydrat",
       "checks": 2,
-      "note": "Golden Days: ab mehreren Artikeln kommen bis zu 10 % Mengenrabatt dazu."
+      "note": "Golden Days: Bei 3 Dosen kommt automatisch Mengenrabatt dazu. 3 × 500 g kosten mit GOLDEN 42,99 € (28,66 €/kg)."
     },
     {
       "cat": "kreatin",
@@ -385,133 +385,560 @@
       "shop": "ironbrothers",
       "code": "DROPTIME",
       "works": true,
-      "effect": "10 % auf alles, auch auf Black-Week-Preise"
+      "effect": "10 % auf alles, auch auf Black-Week-Preise",
+      "checks": 2
     },
     {
       "shop": "ironbrothers",
       "code": "IRON10",
       "works": true,
-      "effect": "10 %, gleich wie DROPTIME"
+      "effect": "10 % auf alles, auch auf Black-Week-Preise",
+      "checks": 2
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "IRON",
+      "works": true,
+      "effect": "10 % auf alles, auch auf Black-Week-Preise",
+      "checks": 2
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "WELCOME10",
+      "works": true,
+      "effect": "10 % auf alles, auch auf Black-Week-Preise",
+      "checks": 2
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "BLACK",
+      "works": true,
+      "effect": "10 % auf alles, auch auf Black-Week-Preise",
+      "checks": 2
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "BLACKFRIDAY",
+      "works": true,
+      "effect": "10 % auf alles, auch auf Black-Week-Preise",
+      "checks": 2
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "IRON20",
+      "works": true,
+      "effect": "gibt nur 10 %, nicht 20 %",
+      "checks": 2
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "SUPPLIGATOR",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "BLACKWEEKS",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "BLACK20",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "ironbrothers",
+      "code": "BLACK30",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
     },
     {
       "shop": "bodylab",
       "code": "DROPTIME",
       "works": true,
-      "effect": "rund 23 % auf Einzelprodukte, nur 1 % auf Bundles"
+      "effect": "rund 23 % auf Einzelprodukte, nur 1 % auf Bundles",
+      "checks": 2
     },
     {
       "shop": "bodylab",
       "code": "SINGLEMAX",
       "works": "teils",
-      "effect": "20 % auf Flavour Powder, auf Kreatin und Isolat nichts"
+      "effect": "nur auf Aktionsartikel, z. B. 20 % auf Flavour Powder; auf Kreatin und Isolat nichts",
+      "checks": 2
     },
     {
-      "shop": "gannikus",
-      "code": "SHOP",
-      "works": true,
-      "effect": "10 % auf alles (Banner im Shop)"
+      "shop": "bodylab",
+      "code": "SUPPLIGATOR",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
     },
     {
-      "shop": "gannikus",
-      "code": "DROPTIME",
-      "works": true,
-      "effect": "10 %, gleich wie SHOP"
+      "shop": "bodylab",
+      "code": "BLACK44",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
     },
     {
-      "shop": "peak",
-      "code": "GOLDEN",
-      "works": true,
-      "effect": "20 % auf alles (Golden Days)"
+      "shop": "bodylab",
+      "code": "BLACK50",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
     },
     {
-      "shop": "peak",
-      "code": "DROPTIME",
-      "works": true,
-      "effect": "20 %, gleich wie GOLDEN"
+      "shop": "bodylab",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
+    },
+    {
+      "shop": "bodylab",
+      "code": "BLACKFRIDAY",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
+    },
+    {
+      "shop": "bodylab",
+      "code": "CYBER44",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
+    },
+    {
+      "shop": "bodylab",
+      "code": "CYBER30ALL",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
+    },
+    {
+      "shop": "bodylab",
+      "code": "BLF30",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
+    },
+    {
+      "shop": "bodylab",
+      "code": "WILLKOMMEN22",
+      "works": false,
+      "effect": "kein Rabatt (alte Black-Friday-Codes sind abgelaufen)",
+      "checks": 1
     },
     {
       "shop": "more",
       "code": "DROPTIME",
       "works": true,
-      "effect": "30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein"
+      "effect": "Black-Week-Rabatt: 30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein",
+      "checks": 2
+    },
+    {
+      "shop": "more",
+      "code": "SUPPLIGATOR",
+      "works": true,
+      "effect": "Black-Week-Rabatt: 30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein",
+      "checks": 2
     },
     {
       "shop": "more",
       "code": "MORE10",
       "works": true,
-      "effect": "30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein"
+      "effect": "Black-Week-Rabatt: 30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein",
+      "checks": 2
+    },
+    {
+      "shop": "more",
+      "code": "MORE",
+      "works": true,
+      "effect": "Black-Week-Rabatt: 30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein",
+      "checks": 2
     },
     {
       "shop": "more",
       "code": "IQ10",
       "works": true,
-      "effect": "30 % (25 % auf Clear Protein), gleich wie DROPTIME; in einem von drei Durchgängen kam der Rabatt nicht an"
+      "effect": "Black-Week-Rabatt: 30 % auf Chunky Flavour und Daily Creatine, 25 % auf Clear Protein",
+      "checks": 2
+    },
+    {
+      "shop": "more",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "more",
+      "code": "BLACKFRIDAY",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "more",
+      "code": "BLACK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "more",
+      "code": "BLACKWEEK26",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "more",
+      "code": "MOREBLACK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "GOLDEN",
+      "works": true,
+      "effect": "20 % auf alles, zusätzlich zum automatischen Mengenrabatt",
+      "checks": 2
+    },
+    {
+      "shop": "peak",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "20 % auf alles, zusätzlich zum automatischen Mengenrabatt",
+      "checks": 2
+    },
+    {
+      "shop": "peak",
+      "code": "SUPPLIGATOR",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "BLACKFRIDAY",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "BLACK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "PEAK10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "WELCOME10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "peak",
+      "code": "GOLDENDAYS",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
     },
     {
       "shop": "esn",
       "code": "DROPTIME",
       "works": true,
-      "effect": "10 %, nicht auf Sale-Artikel"
+      "effect": "10 %, nicht auf Sale-Artikel",
+      "checks": 2
+    },
+    {
+      "shop": "esn",
+      "code": "SUPPLIGATOR",
+      "works": true,
+      "effect": "10 %, nicht auf Sale-Artikel",
+      "checks": 2
+    },
+    {
+      "shop": "esn",
+      "code": "BLACKWEEK",
+      "works": true,
+      "effect": "10 %, nicht auf Sale-Artikel",
+      "checks": 2
     },
     {
       "shop": "esn",
       "code": "ESN",
       "works": false,
-      "effect": "nur Proben und Einzelriegel, nichts auf Kreatin, Isolat, Flavour"
+      "effect": "gilt nur für Proben und Einzelriegel",
+      "checks": 2
     },
     {
       "shop": "esn",
-      "code": "WILKOMMEN10",
+      "code": "BLACKFRIDAY",
       "works": false,
-      "effect": "kein Rabatt"
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "esn",
+      "code": "BLACK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "esn",
+      "code": "ESN10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "esn",
+      "code": "WILLKOMMEN10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
     },
     {
       "shop": "naturecan",
       "code": "WELCOME10",
       "works": true,
-      "effect": "10 %"
+      "effect": "10 %",
+      "checks": 2
     },
     {
       "shop": "naturecan",
       "code": "NATURECAN10",
       "works": true,
-      "effect": "10 %"
+      "effect": "10 %",
+      "checks": 2
+    },
+    {
+      "shop": "naturecan",
+      "code": "BLACK",
+      "works": true,
+      "effect": "10 %",
+      "checks": 2
     },
     {
       "shop": "naturecan",
       "code": "DROPTIME",
       "works": false,
-      "effect": "kein Rabatt"
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "naturecan",
+      "code": "SUPPLIGATOR",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "naturecan",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "naturecan",
+      "code": "BLACKFRIDAY",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "naturecan",
+      "code": "BLACK20",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "naturecan",
+      "code": "NC20",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "gannikus",
+      "code": "SHOP",
+      "works": true,
+      "effect": "10 % auf alles",
+      "checks": 2
+    },
+    {
+      "shop": "gannikus",
+      "code": "DROPTIME",
+      "works": true,
+      "effect": "10 % auf alles",
+      "checks": 2
+    },
+    {
+      "shop": "gannikus",
+      "code": "SUPPLIGATOR",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "gannikus",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "gannikus",
+      "code": "BLACKFRIDAY",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "gannikus",
+      "code": "BLACK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "gannikus",
+      "code": "GANNIKUS10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "gannikus",
+      "code": "WELCOME10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
     },
     {
       "shop": "rocka",
       "code": "DROPTIME",
       "works": true,
-      "effect": "10 %"
+      "effect": "10 %",
+      "checks": 2
     },
     {
       "shop": "rocka",
       "code": "ROCKA10",
       "works": true,
-      "effect": "10 %"
+      "effect": "10 %",
+      "checks": 2
     },
     {
       "shop": "rocka",
-      "code": "WILKOMMEN10",
+      "code": "ADVENT15",
       "works": false,
-      "effect": "kein Rabatt"
+      "effect": "auf Flavor Powder kein Rabatt, laut Banner nur für den Adventskalender",
+      "checks": 1
     },
     {
-      "shop": "ruehl",
-      "code": "–",
-      "works": "teils",
-      "effect": "Gutscheine nur mit Kundenkonto einlösbar, Preis ist schon reduziert"
+      "shop": "rocka",
+      "code": "SUPPLIGATOR",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "rocka",
+      "code": "BLACKWEEK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "rocka",
+      "code": "BLACKFRIDAY",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "rocka",
+      "code": "BLACK",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "rocka",
+      "code": "ROCKA",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
+    },
+    {
+      "shop": "rocka",
+      "code": "WELCOME10",
+      "works": false,
+      "effect": "kein Rabatt",
+      "checks": 1
     },
     {
       "shop": "myprotein",
       "code": "–",
       "works": "teils",
-      "effect": "Shop sagt: kein Code nötig, Rabatt ist im Preis"
+      "effect": "Rabatt ist automatisch im Preis, kein Code nötig",
+      "checks": 1
+    },
+    {
+      "shop": "ruehl",
+      "code": "–",
+      "works": "teils",
+      "effect": "Gutscheine nur mit Kundenkonto einlösbar, Preise sind schon reduziert",
+      "checks": 1
     }
-  ]
+  ],
+  "codeCheckLabel": "10. November 2026, 20:30–21:30 Uhr",
+  "promos": {
+    "more": "Black Week läuft noch rund 4 Tage, bis zu 70 %. Der Rabatt kommt nur mit einem funktionierenden Code an.",
+    "ironbrothers": "„Black Weeks – bis zu 70 %“ läuft. Die Preise sind schon reduziert, der Code gibt 10 % obendrauf.",
+    "peak": "Golden Days den ganzen November: 20 % mit Code plus automatisch bis zu 10 % Mengenrabatt. Beispiel: 3 × Kreatin 59,70 € → 53,73 € (Menge) → 42,99 € mit GOLDEN.",
+    "bodylab": "Aktion „bis zu 60 % mit SINGLEMAX“ auf ausgewählte Einzelprodukte. DROPTIME wirkt breiter.",
+    "esn": "Black Week ist angekündigt (bis zu 70 %), aber noch nicht gestartet. Gerade läuft die Sampling Week (Proben und Riegel).",
+    "rocka": "Black Weeks mit Geschenk ab 75 €. Der Code ADVENT15 aus dem Banner gilt nur für den Adventskalender.",
+    "gannikus": "Keine Black-Week-Aktion sichtbar. Dauerhaft 10 % mit SHOP.",
+    "naturecan": "Keine Black-Week-Aktion sichtbar.",
+    "myprotein": "Bis zu 35 % automatisch, dazu 5 € extra ab 70 € Bestellwert. Kein Code nötig (Shop nicht im Checkout prüfbar).",
+    "ruehl": "Direktrabatte im Preis, Gutscheine nur mit Kundenkonto."
+  }
 }
